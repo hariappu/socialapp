@@ -1,0 +1,45 @@
+<div class="section">
+    <div class="card">
+        <h5 class="card-header">
+            {%if request.user.profile.profile_pic%}
+            <img src="{{request.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+            {%else%}
+            <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+    
+            {%endif%}   
+            {{request.user}}
+        </h5>
+       <form action="{%url 'add-answer' q.id%}" method="post">
+        {%csrf_token%}
+        <input type="text" class="form-control" placeholder="add your answer" name="answer">
+        <button type="submit" class="w3-button w3-theme-d1 w3-margin-bottom"></button> 
+       </form>
+      </div>
+</div>
+<!-- answer starting -->
+<div class="card" style="width: 100%">
+  <div class="card-header">
+    {{q.question_answers.count}}
+    Answers
+  </div>
+  <ul class="list-group list-group-flush">
+   {%for ans in q.question_answers%}
+   <li class="list-group-item">
+    {%if ans.user.profile.profile_pic%}
+    <img src="{{ans.user.profile.profile_pic.url}}" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+    {%else%}
+    <img src="/w3images/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
+
+    {%endif%} 
+    <strong>{{ans.answer}}</strong>
+    posted by <strong>{{ans.user}}</strong>
+    on <strong>{{ans.created_date}}</strong>
+    <!-- <a href="{%url 'upvote' ans.id%}" class="btn btn-primary">{{ans.upvote_count}}Upvote</a> -->
+    <a href="{%url 'upvote' ans.id%}" class="btn btn-danger">{{ans.upvote_count}}<i class="fa fa-heart"></i></a>
+    <a href="{%url 'remove-upvote' ans.id%}" class="btn btn-primary">{{ans.upvote_count.remove}}<i class="fa fa-thumbs-down"></i></a>
+    
+   </li>
+
+   {%endfor%}
+  </ul>
+</div>
