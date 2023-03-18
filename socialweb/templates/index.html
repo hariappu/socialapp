@@ -73,8 +73,10 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
         </p>
          <hr>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>Bio:{{request.user.profile.bio}}</p>
-         <!-- <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> London, UK</p> -->
-         <!-- <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> April 1, 1988</p> -->
+         <p><i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i> Trivandrum, Cochin</p>
+         <p><i class="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i> June 10,2001</p>
+         <p><i class="fa fa-image fa-fw w3-margin-right w3-text-theme"></i> <img src="{{request.user.profile.timeline_pic.url}}"  style="height:50px;width:50px" alt="Avatar">
+         </p>
         </div>
       </div>
       <br>
@@ -283,8 +285,8 @@ html, body, h1, h2, h3, h4, h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Friend Request</p>
-          <img src="/w3images/avatar6.png" alt="Avatar" style="width:50%"><br>
-          <span>Jane Doe</span>
+          <img src="{{request.user.profile.time_line_pic.url}}"  style="height:50px;width:50px" alt="Avatar">
+          <span>{{request.user}}</span>
           <div class="w3-row w3-opacity">
             <div class="w3-half">
               <button class="w3-button w3-block w3-green w3-section" title="Accept"><i class="fa fa-check"></i></button>
